@@ -2,6 +2,8 @@
 /Lib
 /Scripts
 
+pyvenv.cfg
+.gitignore
 # Compiled output
 /dist
 /tmp

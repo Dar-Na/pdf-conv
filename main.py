@@ -6,13 +6,13 @@ import pandas as pd
 
 if __name__ == "__main__":
     # creating a pdf file object
-    pdfFileObj = open('monitor_2022_153.pdf', 'rb')
+    pdfFileObj = open('data/monitor_2022_153.pdf', 'rb')
 
     # creating a pdf reader object
     pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
 
     # printing number of pages in pdf file
-    print(pdfReader.numPages + 1)
+    print(pdfReader.numPages)
 
     data = []
 
