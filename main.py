@@ -31,37 +31,28 @@ if __name__ == "__main__":
             print('     Pages: ', pdfReader.numPages)
 
             startPage = 0; endPage = 0
+            startSearchingPage = 0; endSearchingPage = 20
 
-            for i in range(0, 20):
+            for i in range(startSearchingPage, endSearchingPage):
                 text = pdfReader.getPage(i).extractText()
                 for match in re.finditer('Wpisy pierwsze', text):
                     ind = text.find('Wpisy kolejne')
                     str = text[match.start():ind+16]
                     str = str.replace("\n", " ")
                     str = str.replace(" ", "")
-                    #print(str)
                     ind = str.find('2.Wpisykolejne')
-                    print('     Tekst: ', str)
-                    print('     Page with need data: ', i + 1)
                     str2 = str[ind - 10:ind]
                     str2 = str2.replace("-", " ")
                     str2 = str2.replace(".", " ")
                     str2 = str2.split()
                     startPage = int(str2[0]);
                     endPage = int(str2[1])
+
+                    print('     Tekst: ', str)
+                    print('     Page with need data: ', i + 1)
                     print('     Start page to search: ', startPage)
                     print('     End page to search: ', endPage)
-                    # for matchPageNumber in re.finditer('2.Wpisykolejne', str):
-                    #     ind = matchPageNumber.start()
-                    #     print('page number with need data: ', i+1)
-                    #     str2 = str[matchPageNumber.start()-10:matchPageNumber.start()]
-                    #     str2 = str2.replace("-", " ")
-                    #     str2 = str2.replace(".", " ")
-                    #     str2 = str2.split()
-                    #     startPage = int(str2[0]); endPage = int(str2[1])
-                    #     print('start page to search: ', startPage)
-                    #     print('end page to search: ', endPage)
-                    #     break
+
 
             timeStartFile = time.time()
 
@@ -114,9 +105,12 @@ if __name__ == "__main__":
             print('     with time: %s seconds' % (time.time() - timeStartFile))
 
     # printing data
-    print('====================')
-    print('     ALL DONE:', f)
-    print('     time: %s seconds' % (time.time() - timeStart))
+    print('*===================')
+    print('||                  ')
+    print('||     ALL DONE:', f)
+    print('||     time: %s seconds' % (time.time() - timeStart))
+    print('||                  ')
+    print('*===================')
 
     d1 = {'Name': dataPozKRS, 'Adres poczty elektronicznej': dataEmail, 'Adres strony internetowej': dataWWW}
 
