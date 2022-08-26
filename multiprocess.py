@@ -115,7 +115,7 @@ if __name__ == "__main__":
     ctx = mp.get_context('spawn')
     q = ctx.Queue()
     files = []
-    N = 6
+    N = 10
 
     dataPozKRS = []
     dataEmail = []
